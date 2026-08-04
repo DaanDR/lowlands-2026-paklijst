@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lowlands 2026 · Paklijst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paars:#5B2A86;
+    --roze:#FF3E9A;
+    --oranje:#FF7A1A;
+    --geel:#FFD23F;
+    --groen:#3DDC5B;
+    --blauw:#2B50E0;
+    --inkt:#1A0E2E;
+    --papier:#FFF8EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Space Grotesk',sans-serif;
+    background:var(--inkt);
+    color:var(--papier);
+    line-height:1.5;
+  }
+
+  /* ── HERO ─────────────────────────── */
+  header{
+    text-align:center;
+    padding:56px 20px 36px;
+    position:relative;
+    overflow:hidden;
+    background:
+      repeating-linear-gradient(-45deg,
+        transparent 0 22px,
+        rgba(255,62,154,.07) 22px 44px);
+  }
+  .eyebrow{
+    font-weight:700;letter-spacing:.35em;text-transform:uppercase;
+    font-size:.72rem;color:var(--geel);margin-bottom:14px;
+  }
+  h1{
+    font-family:'Bungee','Arial Black','Helvetica Neue',Helvetica,sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(2.6rem,10vw,5.5rem);
+    line-height:.95;
+    background:repeating-linear-gradient(90deg,
+      var(--roze) 0 14px, var(--oranje) 14px 28px,
+      var(--geel) 28px 42px, var(--groen) 42px 56px,
+      var(--blauw) 56px 70px);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    margin-bottom:6px;
+  }
+  h1 span{display:block;}
+  .sub{
+    font-size:1rem;color:var(--papier);opacity:.75;font-weight:500;
+  }
+  .golf{display:block;width:100%;height:34px;margin-top:28px;}
+
+  /* ── LAYOUT ───────────────────────── */
+  main{max-width:760px;margin:0 auto;padding:8px 18px 80px;}
+  section{
+    border-radius:22px;
+    padding:26px 24px 28px;
+    margin-bottom:26px;
+    color:var(--inkt);
+  }
+  section h2{
+    font-family:'Bungee','Arial Black','Helvetica Neue',Helvetica,sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:clamp(1.25rem,4.5vw,1.7rem);
+    letter-spacing:.01em;
+    margin-bottom:16px;
+    display:flex;align-items:center;gap:12px;
+  }
+  section h2::after{
+    content:"";flex:1;height:5px;border-radius:3px;
+    background:currentColor;opacity:.18;
+  }
+
+  /* section kleuren */
+  .s-auto   {background:var(--geel);}
+  .s-wie    {background:var(--groen);}
+  .s-bood   {background:var(--papier);}
+  .s-drank  {background:var(--roze);color:var(--papier);}
+  .s-drank h2{color:var(--papier);}
+  .s-action {background:var(--oranje);}
+  .s-mee    {background:#CDB8F0;}
+
+  ul{list-style:none;}
+  li{
+    display:flex;align-items:flex-start;gap:10px;
+    padding:7px 0;
+    border-bottom:1.5px dashed rgba(0,0,0,.14);
+    font-size:1rem;font-weight:500;
+  }
+  .s-drank li{border-bottom-color:rgba(255,255,255,.25);}
+  li:last-child{border-bottom:none;}
+  .qty{
+    margin-left:auto;flex-shrink:0;
+    font-weight:700;font-size:.82rem;
+    background:rgba(0,0,0,.1);
+    padding:2px 10px;border-radius:99px;
+    white-space:nowrap;
+  }
+  .s-drank .qty{background:rgba(255,255,255,.22);}
+
+  /* checkboxes voor boodschappen/action */
+  .check{
+    appearance:none;-webkit-appearance:none;
+    width:21px;height:21px;flex-shrink:0;margin-top:2px;
+    border:2.5px solid var(--inkt);border-radius:6px;
+    cursor:pointer;position:relative;background:transparent;
+    transition:background .15s;
+  }
+  .s-drank .check{border-color:var(--papier);}
+  .check:checked{background:var(--inkt);}
+  .s-drank .check:checked{background:var(--papier);}
+  .check:checked::after{
+    content:"✓";position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--geel);font-weight:900;font-size:.85rem;
+  }
+  .s-drank .check:checked::after{color:var(--roze);}
+  .check:checked ~ .itm{opacity:.45;text-decoration:line-through;}
+  .check:focus-visible{outline:3px solid var(--blauw);outline-offset:2px;}
+  .itm{transition:opacity .15s;}
+
+  /* twee kolommen op breder scherm */
+  @media(min-width:560px){
+    .cols{columns:2;column-gap:34px;}
+    .cols li{break-inside:avoid;}
+  }
+
+  /* naam-badges */
+  .wie{font-weight:700;}
+  .tag{
+    display:inline-block;font-weight:700;font-size:.8rem;
+    background:var(--inkt);color:var(--geel);
+    padding:2px 10px;border-radius:99px;margin-left:auto;
+    white-space:nowrap;flex-shrink:0;
+  }
+  .s-mee .tag{background:var(--paars);color:#fff;}
+
+  .autootje{
+    display:flex;align-items:center;gap:12px;
+    background:rgba(0,0,0,.06);border-radius:14px;
+    padding:12px 16px;margin-bottom:10px;
+    font-weight:700;font-size:1.02rem;border-bottom:none;
+  }
+  .autootje:last-child{margin-bottom:0;}
+  .autootje .emoji{font-size:1.4rem;}
+
+  footer{
+    text-align:center;padding:0 20px 60px;
+    font-size:.85rem;opacity:.55;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    h1{animation:shift 14s linear infinite;background-size:280px 100%;}
+    @keyframes shift{to{background-position:280px 0;}}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">A Campingflight to</div>
+  <h1><span>Lowlands</span><span>2026</span></h1>
+  <p class="sub">De paklijst · Biddinghuizen · 21–23 augustus</p>
+  <svg class="golf" viewBox="0 0 800 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 20 Q 50 0 100 20 T 200 20 T 300 20 T 400 20 T 500 20 T 600 20 T 700 20 T 800 20" fill="none" stroke="#FF3E9A" stroke-width="5"/>
+    <path d="M0 30 Q 50 10 100 30 T 200 30 T 300 30 T 400 30 T 500 30 T 600 30 T 700 30 T 800 30" fill="none" stroke="#3DDC5B" stroke-width="5" opacity=".7"/>
+  </svg>
+</header>
+
+<main>
+
+  <!-- AUTOVERDELING -->
+  <section class="s-auto">
+    <h2>🚗 Autoverdeling</h2>
+    <div class="autootje"><span class="emoji">🚙</span> Norbert, Michelle &amp; Daan</div>
+    <div class="autootje"><span class="emoji">🚗</span> Ruut, Natalie &amp; Kilian</div>
+    <div class="autootje"><span class="emoji">🚕</span> Johnny &amp; Marit</div>
+  </section>
+
+  <!-- WIE HAALT WAAR -->
+  <section class="s-wie">
+    <h2>📋 Wie haalt waar?</h2>
+    <ul>
+      <li><span class="wie">Boodschappen</span><span class="tag">Johnny &amp; Marit</span></li>
+      <li><span class="wie">Drank</span><span class="tag">Ruut &amp; Natalie</span></li>
+      <li><span class="wie">Action / Etos</span><span class="tag">Norbert &amp; Michelle</span></li>
+      <li><span class="wie">Koffie</span><span class="tag">Daan</span></li>
+    </ul>
+  </section>
+
+  <!-- BOODSCHAPPEN -->
+  <section class="s-bood">
+    <h2>🛒 Boodschappen</h2>
+    <ul class="cols">
+      <li><input type="checkbox" class="check" id="b1"><label class="itm" for="b1">Pannenkoeken</label><span class="qty">4 pakken</span></li>
+      <li><input type="checkbox" class="check" id="b2"><label class="itm" for="b2">Knakworsten</label><span class="qty">12</span></li>
+      <li><input type="checkbox" class="check" id="b3"><label class="itm" for="b3">Eieren</label><span class="qty">48</span></li>
+      <li><input type="checkbox" class="check" id="b4"><label class="itm" for="b4">Bolletjes wit</label><span class="qty">5 zakken</span></li>
+      <li><input type="checkbox" class="check" id="b5"><label class="itm" for="b5">Krentenbollen</label><span class="qty">3 zakken</span></li>
+      <li><input type="checkbox" class="check" id="b6"><label class="itm" for="b6">Crackers</label><span class="qty">1 pak</span></li>
+      <li><input type="checkbox" class="check" id="b7"><label class="itm" for="b7">Nutella</label><span class="qty">1 blauwe</span></li>
+      <li><input type="checkbox" class="check" id="b8"><label class="itm" for="b8">Mayo (Zaanse)</label><span class="qty">grote fles</span></li>
+      <li><input type="checkbox" class="check" id="b9"><label class="itm" for="b9">Ketchup Heinz</label></li>
+      <li><input type="checkbox" class="check" id="b10"><label class="itm" for="b10">Curry</label><span class="qty">1 oliehoorn</span></li>
+      <li><input type="checkbox" class="check" id="b11"><label class="itm" for="b11">Gebakken uitjes</label><span class="qty">1</span></li>
+      <li><input type="checkbox" class="check" id="b12"><label class="itm" for="b12">Plakken kaas belegen</label><span class="qty">4–5</span></li>
+      <li><input type="checkbox" class="check" id="b13"><label class="itm" for="b13">Komkommer</label><span class="qty">3</span></li>
+      <li><input type="checkbox" class="check" id="b14"><label class="itm" for="b14">Instant noodles</label><span class="qty">20+</span></li>
+      <li><input type="checkbox" class="check" id="b15"><label class="itm" for="b15">Gehaktballetjes in saté</label><span class="qty">3 blikken</span></li>
+      <li><input type="checkbox" class="check" id="b16"><label class="itm" for="b16">Appels</label><span class="qty">2 kg-zakken</span></li>
+      <li><input type="checkbox" class="check" id="b17"><label class="itm" for="b17">Bananen</label><span class="qty">3 groene trossen</span></li>
+      <li><input type="checkbox" class="check" id="b18"><label class="itm" for="b18">Partypack chips</label><span class="qty">2 boxen</span></li>
+      <li><input type="checkbox" class="check" id="b19"><label class="itm" for="b19">Kauwgom &amp; smint</label></li>
+      <li><input type="checkbox" class="check" id="b20"><label class="itm" for="b20">Snoepjes</label></li>
+      <li><input type="checkbox" class="check" id="b21"><label class="itm" for="b21">Vuilniszakken</label><span class="qty">2</span></li>
+      <li><input type="checkbox" class="check" id="b22"><label class="itm" for="b22">Stroop</label><span class="qty">1</span></li>
+      <li><input type="checkbox" class="check" id="b23"><label class="itm" for="b23">Poedersuiker</label><span class="qty">1</span></li>
+      <li><input type="checkbox" class="check" id="b24"><label class="itm" for="b24">Nootjes</label><span class="qty">Makro grote bak</span></li>
+      <li><input type="checkbox" class="check" id="b25"><label class="itm" for="b25">ORS</label></li>
+      <li><input type="checkbox" class="check" id="b26"><label class="itm" for="b26">Koekjes</label></li>
+      <li><input type="checkbox" class="check" id="b27"><label class="itm" for="b27">Red Bull sugarfree</label><span class="qty">1 tray</span></li>
+      <li><input type="checkbox" class="check" id="b28"><label class="itm" for="b28">Paracetamol</label></li>
+      <li><input type="checkbox" class="check" id="b29"><label class="itm" for="b29">Vitamine C</label></li>
+      <li><input type="checkbox" class="check" id="b30"><label class="itm" for="b30">Oliespray, peper &amp; zout</label></li>
+      <li><input type="checkbox" class="check" id="b31"><label class="itm" for="b31">Smeerkaas</label><span class="qty">2 grote</span></li>
+      <li><input type="checkbox" class="check" id="b32"><label class="itm" for="b32">Afwasmiddel</label></li>
+      <li><input type="checkbox" class="check" id="b33"><label class="itm" for="b33">Pindakaas</label><span class="qty">1</span></li>
+      <li><input type="checkbox" class="check" id="b34"><label class="itm" for="b34">Bakje tomaten</label><span class="qty">1</span></li>
+      <li><input type="checkbox" class="check" id="b35"><label class="itm" for="b35">Uitgebakken ontbijtspek</label><span class="qty">4×</span></li>
+      <li><input type="checkbox" class="check" id="b36"><label class="itm" for="b36">IJs</label><span class="qty">2 boxen</span></li>
+    </ul>
+  </section>
+
+  <!-- DRANK -->
+  <section class="s-drank">
+    <h2>🍻 Drank</h2>
+    <ul>
+      <li><input type="checkbox" class="check" id="d1"><label class="itm" for="d1">Bier — 4 kratjes, 2 bestellen</label><span class="qty">100</span></li>
+      <li><input type="checkbox" class="check" id="d2"><label class="itm" for="d2">Stëlz mannen — ice tea &amp; mango</label><span class="qty">100</span></li>
+      <li><input type="checkbox" class="check" id="d3"><label class="itm" for="d3">Stëlz vrouwen — groen, mango ice tea, aperol</label><span class="qty">112</span></li>
+      <li><input type="checkbox" class="check" id="d4"><label class="itm" for="d4">Malibu</label></li>
+      <li><input type="checkbox" class="check" id="d5"><label class="itm" for="d5">Vodka</label><span class="qty">6 flessen</span></li>
+      <li><input type="checkbox" class="check" id="d6"><label class="itm" for="d6">Salmari en andere shotjes</label></li>
+    </ul>
+  </section>
+
+  <!-- ACTION / ETOS -->
+  <section class="s-action">
+    <h2>🧰 Action / Etos</h2>
+    <ul class="cols">
+      <li><input type="checkbox" class="check" id="a1"><label class="itm" for="a1">Oprolbare jerrycans</label><span class="qty">2×</span></li>
+      <li><input type="checkbox" class="check" id="a2"><label class="itm" for="a2">Oprolbare waterflesjes</label><span class="qty">12×</span></li>
+      <li><input type="checkbox" class="check" id="a3"><label class="itm" for="a3">Theedoeken</label></li>
+      <li><input type="checkbox" class="check" id="a4"><label class="itm" for="a4">Spanbanden &amp; vershoudfolie</label></li>
+      <li><input type="checkbox" class="check" id="a5"><label class="itm" for="a5">Verlichting &amp; versiering</label></li>
+      <li><input type="checkbox" class="check" id="a6"><label class="itm" for="a6">Muggenspray</label></li>
+      <li><input type="checkbox" class="check" id="a7"><label class="itm" for="a7">Wegwerpbestek, borden &amp; glazen</label></li>
+      <li><input type="checkbox" class="check" id="a8"><label class="itm" for="a8">Natte doekjes</label></li>
+      <li><input type="checkbox" class="check" id="a9"><label class="itm" for="a9">Wegwerpwashandjes</label></li>
+      <li><input type="checkbox" class="check" id="a10"><label class="itm" for="a10">Gasbrander + gasflesje</label></li>
+      <li><input type="checkbox" class="check" id="a11"><label class="itm" for="a11">Pannen&nbsp;!!</label></li>
+      <li><input type="checkbox" class="check" id="a12"><label class="itm" for="a12">Ductape</label></li>
+    </ul>
+  </section>
+
+  <!-- MEENEMEN -->
+  <section class="s-mee">
+    <h2>🎒 Meenemen</h2>
+    <ul>
+      <li><span class="wie">Gasstel</span><span class="tag">Ruut &amp; Nat</span></li>
+      <li><span class="wie">Jetboil</span><span class="tag">Johnny &amp; Marit</span></li>
+      <li><span class="wie">Koelboxen</span><span class="tag">Ruut &amp; Nat · Nor &amp; Mich</span></li>
+      <li><span class="wie">Muziekboxen</span><span class="tag">Ruut &amp; Nat · Daan</span></li>
+      <li><span class="wie">Koffie (french press)</span><span class="tag">Daan</span></li>
+      <li><span class="wie">Dobbelstenen + kaarten</span></li>
+      <li><span class="wie">Poppers</span><span class="tag">Daan</span></li>
+      <li><span class="wie">Druppels (3 flesjes)</span><span class="tag">Kilian</span></li>
+      <li><span class="wie">Multitool</span><span class="tag">Daan</span></li>
+      <li><span class="wie">Pomp luchtbedden</span><span class="tag">Ruut &amp; Nat · Daan</span></li>
+      <li><span class="wie">Stekkerdoos + föhn</span><span class="tag">Nat + Mies (R+N)</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Zie je daar 🌈 · Campingflight to Lowlands Paradise
+</footer>
+
+</body>
+</html>
